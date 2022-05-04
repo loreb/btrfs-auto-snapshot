@@ -1,4 +1,5 @@
 #!/bin/sh
+PATH="$PATH:/usr/local/sbin"
 
 # Only call btrfs-auto-snapshot if it's available
 which btrfs-auto-snapshot > /dev/null || exit 0
