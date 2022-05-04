@@ -27,3 +27,4 @@ uninstall:
 	rm $(DESTDIR)/etc/cron.monthly/btrfs-auto-snapshot
 	rm $(DESTDIR)$(PREFIX)/share/man/man8/btrfs-auto-snapshot.8
 	rm $(DESTDIR)$(PREFIX)/sbin/btrfs-auto-snapshot
+	rm $(DESTDIR)$(PREFIX)/sbin/_btrfs_zfs
