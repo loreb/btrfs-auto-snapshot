@@ -1,21 +1,13 @@
-zfs-auto-snapshot:
 
-An alternative implementation of the zfs-auto-snapshot service for Linux
-that is compatible with zfs-linux and zfs-fuse.
+Minimal adaptation of zfs-auto-snapshot to btrfs.
 
-Automatically create, rotate, and destroy periodic ZFS snapshots. This is
-the utility that creates the @zfs-auto-snap_frequent, @zfs-auto-snap_hourly,
-@zfs-auto-snap_daily, @zfs-auto-snap_weekly, and @zfs-auto-snap_monthly
-snapshots if it is installed.
+It's in a "works for me using the provided cronjobs" state;
+test in a virtual machine before even dreaming of using it,
+and consider using https://github.com/nachoparker/btrfs-snp instead!
 
-This program is a posixly correct bourne shell script.  It depends only on
-the zfs utilities and cron, and can run in the dash shell.
+In particular, something I have NOT tested is https://github.com/csirac2/snazzer/commit/50bf4f22a7bf267180556a3fe4af5b16ea0f2dda
+ie what happens if the subvolume is owned by someone other than root.
 
+Also at present there is no way to disable snapshots for /var/cache or
+whatever.
 
-Installation:
--------------
-
-wget https://github.com/zfsonlinux/zfs-auto-snapshot/archive/upstream/1.2.4.tar.gz
-tar -xzf 1.2.4.tar.gz
-cd zfs-auto-snapshot-upstream-1.2.4
-make install

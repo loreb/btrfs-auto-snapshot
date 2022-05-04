@@ -1,0 +1,3 @@
+PATH="/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+
+*/15 * * * * root which btrfs-auto-snapshot > /dev/null || exit 0 ; btrfs-auto-snapshot --quiet --syslog --label=frequent --keep=4 //

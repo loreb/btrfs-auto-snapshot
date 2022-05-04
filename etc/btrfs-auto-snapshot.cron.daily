@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Only call btrfs-auto-snapshot if it's available
+which btrfs-auto-snapshot > /dev/null || exit 0
+
+exec btrfs-auto-snapshot --quiet --syslog --label=daily --keep=31 //
