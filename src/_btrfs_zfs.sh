@@ -144,7 +144,12 @@ list() {
 	cd "$vol/$SnapDir" || exit
 	# shellcheck disable=SC2012
 	# I need ls's sorting flags
-	ls $lssort $lsreverse -- | while read -r i ; do btrfs subvol show "$i" >/dev/null && echo "${vol}@${i}" ; done
+	ls $lssort $lsreverse -- | while read -r i ; do
+		test -d "$i" || continue # I like a CACHEDIR.TAG (think "tar --exclude-caches")
+		# btrfs subvolume show x => ERROR (but won't say "x")
+		btrfs subvol show "$i" >/dev/null || { blah "btrfs subvol show $i inside $PWD"; continue; }
+		echo "${vol}@${i}"
+	done
 	)
 	done
 }
