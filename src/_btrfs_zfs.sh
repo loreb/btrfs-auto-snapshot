@@ -50,8 +50,8 @@ destroy() {
 	for i in "$@" ; do
 		_parseat "$i"
 		test -d "$SUBV"/"$SnapDir" || { ls -l "$SUBV/$SnapDir" >&2; exit 100; }
-		blah "destroy $i"
-		silently btrfs subvolume delete "$SUBV/$SnapDir/$SNAP" ; exit 111 || exit
+		blah "destroy $SUBV/$SnapDir/$SNAP"
+		silently btrfs subvolume delete "$SUBV/$SnapDir/$SNAP" || exit
 	done
 }
 
